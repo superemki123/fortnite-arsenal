@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fortnite Waffen Arsenal</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
+  </head>
+  <body class="p-3">
+    <table class="table-auto" id="meineTabelle">
+      <thead>
+        <td class="px-4 py-2">Name</td>
+        <td class="px-4 py-2">Farbe</td>
+        <td class="px-4 py-2">DPS</td>
+        <td class="px-4 py-2">KugelTyp</td>
+        <td class="px-4 py-2">Schaden</td>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      let name = "mimi";
+      let waffenDB = [
+        {
+          name: "Sturmgewehr",
+          farbe: 9,
+          kugelTyp: "mittlere Munition",
+          dps: 165,
+          Schaden: 30,
+        },
+        {
+          name: "Shotgun",
+          farbe: 5,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Sturmgewehr",
+          farbe: 7,
+          kugelTyp: "mittlere Munition",
+          dps: 170.5,
+          Schaden: 31,
+        },
+        {
+          name: "Sturmgewehr",
+          farbe: 5,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Sturmgewehr",
+          farbe: 5,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Shotgun",
+          farbe: 3,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Shotgun",
+          farbe: 5,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Sturmgewehr",
+          farbe: 3,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+        {
+          name: "Sturmgewehr",
+          farbe: 5,
+          kugelTyp: "mittlere Munition",
+          dps: 181.5,
+          Schaden: 33,
+        },
+      ];
+
+      const waffen = _.sortBy(waffenDB, ["name", "farbe"]);
+
+      const meineTabelleBody = document.getElementsByTagName("tbody")[0];
+
+      function zelleErstellen(zeile, inhalt) {
+        const zelle = document.createElement("td");
+        zelle.classList.add("border");
+        zelle.classList.add("px-4");
+        zelle.classList.add("py-2");
+        zeile.appendChild(zelle);
+        const name = document.createTextNode(inhalt);
+        zelle.appendChild(name);
+      }
+
+      function tabelleErstellen() {
+        waffen.forEach((gegenstand, index) => {
+          const newTR = document.createElement("tr");
+          if (index % 2 == 0) {
+            newTR.classList.add("bg-gray-100");
+          }
+
+          zelleErstellen(newTR, gegenstand.name);
+          zelleErstellen(newTR, konvertiereFarbcode(gegenstand.farbe));
+          zelleErstellen(newTR, gegenstand.dps);
+          zelleErstellen(newTR, gegenstand.kugelTyp);
+          zelleErstellen(newTR, gegenstand.Schaden);
+
+          meineTabelleBody.appendChild(newTR);
+        });
+      }
+
+      function konvertiereFarbcode(farbCode) {
+        if (farbCode === 3) {
+          return "Lila";
+        }
+
+        if (farbCode === 5) {
+          return "Blau";
+        }
+
+        if (farbCode === 7) {
+          return "Grün";
+        }
+        if (farbCode === 9) {
+          return "Grau";
+        }
+        if (farbCode === 1) {
+          return "Gold";
+        }
+      }
+
+      tabelleErstellen();
+    </script>
+  </body>
+</html>
