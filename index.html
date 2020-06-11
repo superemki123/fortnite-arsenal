@@ -19,7 +19,7 @@
     <table class="table-auto" id="meineTabelle">
       <thead>
         <td class="px-4 py-2">Name</td>
-        <td class="px-4 py-2">Farbe</td>
+        <td class="px-4 py-2">Seltenheitsgrad</td>
         <td class="px-4 py-2">DPS</td>
         <td class="px-4 py-2">KugelTyp</td>
         <td class="px-4 py-2">Schaden</td>
@@ -32,70 +32,77 @@
       let waffenDB = [
         {
           name: "Sturmgewehr",
-          farbe: 9,
+          seltenheitsgrad: 9,
           kugelTyp: "mittlere Munition",
           dps: 165,
           Schaden: 30,
         },
         {
-          name: "Shotgun",
-          farbe: 5,
-          kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
-        },
-        {
           name: "Sturmgewehr",
-          farbe: 7,
+          seltenheitsgrad: 7,
           kugelTyp: "mittlere Munition",
           dps: 170.5,
           Schaden: 31,
         },
         {
           name: "Sturmgewehr",
-          farbe: 5,
+          seltenheitsgrad: 5,
           kugelTyp: "mittlere Munition",
           dps: 181.5,
           Schaden: 33,
         },
         {
           name: "Sturmgewehr",
-          farbe: 5,
+          seltenheitsgrad: 3,
           kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
-        },
-        {
-          name: "Shotgun",
-          farbe: 3,
-          kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
-        },
-        {
-          name: "Shotgun",
-          farbe: 5,
-          kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
+          dps: 192.5,
+          Schaden: 35,
         },
         {
           name: "Sturmgewehr",
-          farbe: 3,
+          seltenheitsgrad: 1,
           kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
+          dps: 198,
+          Schaden: 36,
         },
         {
-          name: "Sturmgewehr",
-          farbe: 5,
-          kugelTyp: "mittlere Munition",
-          dps: 181.5,
-          Schaden: 33,
+          name: "Pumpgun",
+          seltenheitsgrad: 9,
+          kugelTyp: "Schrotflinten-Munition",
+          dps: 49,
+          Schaden: 70,
+        },
+        {
+          name: "Pumpgun",
+          seltenheitsgrad: 7,
+          kugelTyp: "Schrotflinten-Munition",
+          dps: 56,
+          Schaden: 80,
+        },
+        {
+          name: "Pumpgun",
+          seltenheitsgrad: 5,
+          kugelTyp: "Schrotflinten-Munition",
+          dps: 63,
+          Schaden: 90,
+        },
+        {
+          name: "Pumpgun",
+          seltenheitsgrad: 3,
+          kugelTyp: "Schrotflinten-Munition",
+          dps: 70,
+          Schaden: 100,
+        },
+        {
+          name: "Pumpgun",
+          seltenheitsgrad: 1,
+          kugelTyp: "Schrotflinten-Munition",
+          dps: 77,
+          Schaden: 110,
         },
       ];
 
-      const waffen = _.sortBy(waffenDB, ["name", "farbe"]);
+      const waffen = _.sortBy(waffenDB, ["name", "seltenheitsgrad"]);
 
       const meineTabelleBody = document.getElementsByTagName("tbody")[0];
 
@@ -117,7 +124,10 @@
           }
 
           zelleErstellen(newTR, gegenstand.name);
-          zelleErstellen(newTR, konvertiereFarbcode(gegenstand.farbe));
+          zelleErstellen(
+            newTR,
+            konvertiereFarbcode(gegenstand.seltenheitsgrad)
+          );
           zelleErstellen(newTR, gegenstand.dps);
           zelleErstellen(newTR, gegenstand.kugelTyp);
           zelleErstellen(newTR, gegenstand.Schaden);
